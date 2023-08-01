@@ -138,7 +138,6 @@ void SortearBomba(){
         coluna = rand() % 9;
         if (celula[linha][coluna].Bomba == 0){
             celula[linha][coluna].Bomba = 1;
-            printf("celula[%d][%d] = *\n", linha, coluna);
         }else{
             i--;
         }
@@ -160,7 +159,7 @@ void VizinhoBomba(){
     }
 }
 
-//Função para contar bombas vizinhas
+//FunÃ§Ã£o para contar bombas vizinhas
 int Contador(int linha_cont, int coluna_cont){
     int quant = 0;
     int Validez(int linha_val, int coluna_val);
@@ -207,7 +206,7 @@ int Contador(int linha_cont, int coluna_cont){
     return quant;
 }
 
-//Função para validar uma celula
+//FunÃ§Ã£o para validar uma celula
 int Validez(int linha_val, int coluna_val){
     if (linha_val>=0 && linha_val<16 && coluna_val>=0 && coluna_val<10){
         return 1;
@@ -215,12 +214,12 @@ int Validez(int linha_val, int coluna_val){
         return 0;
     }
 }
-//Função para verificar onde o mouse clicou
+//FunÃ§Ã£o para verificar onde o mouse clicou
 int PegarCoordenada(float x, float y){
 
     int cont=0;
 
-    //Escolha entre Pá/Bandeira
+    //Escolha entre PÃ¡/Bandeira
     if((x >= 140 && x <= 170) &&
        (y >= 15 && y <= 45) &&
        jogando == 1){
@@ -440,19 +439,16 @@ int main(){
     ALLEGRO_BITMAP *imagem_relogio = NULL;
     ALLEGRO_BITMAP *img_etiqueta_perder = NULL;
     ALLEGRO_BITMAP *img_etiqueta_ganhar = NULL;
-    //ALLEGRO_BITMAP *img_menu = NULL;
-    //ALLEGRO_BITMAP *img_placa = NULL;
 
-    //Rotinas de inicialização---------------
+    //Rotinas de inicializaÃ§Ã£o---------------
 
     //Iniciar o allegro
     if(!al_init()){
         fprintf(stderr, "Erro ao iniciar o allegro\n");
-        //stderr -> tela
         return -1;
     }
 
-    //Criar tela com as dimensões ja feitas
+    //Criar tela com as dimensÃµes ja feitas
     display = al_create_display(SCREEN_W, SCREEN_H);
     if(!display){
         fprintf(stderr, "Erro ao criar a tela\n");
@@ -501,10 +497,10 @@ int main(){
     //Registra na fila de eventos o time
     al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
-    //Inicialização de add-on para usar fontes
+    //InicializaÃ§Ã£o de add-on para usar fontes
     al_init_font_addon();
 
-    //Inicialização do add-on para uso de fontes True Type
+    //InicializaÃ§Ã£o do add-on para uso de fontes True Type
     al_init_ttf_addon();
 
     //Carregar a fonte
@@ -512,7 +508,7 @@ int main(){
     fonte_relogio = al_load_font("Pixellari.ttf", 21, NULL);
     fonte_menssagem = al_load_font("Pixellari.ttf", 35, NULL);
 
-    //Inicialização do add-on para utilizar imagem
+    //InicializaÃ§Ã£o do add-on para utilizar imagem
     al_init_image_addon();
 
     //Carregar a imagem
@@ -522,8 +518,8 @@ int main(){
     imagem_relogio = al_load_bitmap("cronometro.png");
     img_etiqueta_perder = al_load_bitmap("etiqueta.png");
     img_etiqueta_ganhar = al_load_bitmap("etiqueta_win.png");
-    //img_menu = al_load_bitmap("menu.png");
-    //img_placa = al_load_bitmap("placa_madeira.png");
+
+    //------------------------------------------
 
     Iniciar();
 
@@ -541,11 +537,10 @@ int main(){
             jogando = PegarCoordenada(ev.mouse.x, ev.mouse.y);
             printf("\nCoordenada: %d %d\n", ev.mouse.x, ev.mouse.y);
         }
-        //Se o cursor passar em cima das opções (vencer/perder)
+        //Se o cursor passar em cima das opÃ§Ãµes (vencer/perder)
         else if(ev.type == ALLEGRO_EVENT_MOUSE_AXES){
             pos_x = ev.mouse.x;
             pos_y = ev.mouse.y;
-            //printf("%f %f\n", pos_x, pos_y);
         }
         //Se o tipo do evento for um temporizador, ou seja, se o tempo passou de t para t+1
         else if(ev.type == ALLEGRO_EVENT_TIMER){
@@ -603,7 +598,7 @@ int main(){
                     }
                 }
 
-                //Interface de informações adicionais
+                //Interface de informaÃ§Ãµes adicionais
                 draw_margem_sup(20, 90, 15, 45);
                 al_draw_filled_rectangle(20, 15,
                                  90, 45,
